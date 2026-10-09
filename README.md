@@ -1,6 +1,6 @@
 # Boto Faminto
 
-Jogo multiplayer em rede local para o interclasses, no estilo agar.io. Cada
+Jogo multiplayer em rede local para o interclasses da escola, no estilo agar.io. Cada
 aluno é um peixe no rio, controlado pelo celular ou computador. O peixe cresce comendo
 piabas e engolindo peixes menores de outras turmas. O telão mostra o rio
 inteiro e o **tamanho somado de cada turma** ao vivo.
@@ -61,7 +61,7 @@ No Linux pode ser necessário `pip3` ou `pip install --break-system-packages -r 
 
 ---
 
-## Como usar na escola
+## Como usar em rede
 
 1. **Ligue o roteador** e conecte o notebook no Wi-Fi dele.
 2. Abra `config.py` e confira os nomes e as cores das turmas, o nome e a senha
@@ -79,7 +79,7 @@ No Linux pode ser necessário `pip3` ou `pip install --break-system-packages -r 
    segundo abre o jogo. Eles escolhem nome e turma e já podem treinar.
 6. Quando todos estiverem no rio, aperte **Iniciar** (ou a tecla `I`).
 
-### Controles do professor (telão)
+### Controles do admin (telão)
 
 | Tecla | Ação |
 |---|---|
@@ -213,10 +213,9 @@ a comida dos quadrados perto de cada peixe.
 
 ---
 
-## Projeto com a turma
+## Projeto 
 
-O protótipo já funciona de ponta a ponta. A ideia é a turma de
-Desenvolvimento de Sistemas assumir e evoluir o jogo até o interclasses.
+O protótipo já funciona de ponta a ponta. A ideia é os alunos assumir e evoluir o jogo até o interclasses.
 
 ### Sugestão de equipes
 
