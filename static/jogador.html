@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#042a32">
+  <title>Boto Faminto</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 40 40%22%3E%3Ccircle cx=%2220%22 cy=%2220%22 r=%2218%22 fill=%22%230b5662%22/%3E%3Cellipse cx=%2220%22 cy=%2222%22 rx=%2213%22 ry=%227%22 fill=%22%23f59ac3%22/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/static/css/comum.css">
+  <link rel="stylesheet" href="/static/css/jogador.css">
+</head>
+<body>
+  <canvas id="rio"></canvas>
+
+  <!-- HUD durante o jogo -->
+  <div id="hud" hidden>
+    <div class="hud-topo">
+      <div class="hud-turma">
+        <span class="chip-cor" id="hud-cor"></span>
+        <span><b id="hud-turma-nome">—</b><small id="hud-turma-pontos">0</small></span>
+      </div>
+      <div class="hud-relogio" id="hud-relogio">TREINO</div>
+      <button class="hud-sair" id="botao-sair" aria-label="Sair do jogo">✕</button>
+    </div>
+    <div class="hud-tamanho">
+      <span>Tamanho</span><b id="hud-massa">15</b>
+      <small id="hud-posicao"></small>
+    </div>
+    <button class="botao-arrancada" id="botao-arrancada" aria-label="Arrancada">
+      <span class="recarga" id="recarga"></span>
+      <span class="raio">⚡</span>
+      <small>Arrancada</small>
+    </button>
+    <div class="hud-dica" id="hud-dica">Treino livre · arraste o dedo para nadar</div>
+    <div class="toast" id="toast"></div>
+    <div class="alerta-boto" id="alerta-boto" hidden></div>
+  </div>
+
+  <!-- Joystick que aparece onde o dedo tocar -->
+  <div id="joystick" hidden><div class="manche"></div></div>
+
+  <!-- Contagem regressiva -->
+  <div id="contagem" hidden><span id="contagem-numero">3</span></div>
+
+  <!-- Devorado -->
+  <div id="devorado" hidden>
+    <div class="cartao-devorado">
+      <p class="devorado-titulo">Você foi devorado!</p>
+      <p id="devorado-por"></p>
+      <p class="devorado-volta">Voltando em <b id="devorado-tempo">3</b>…</p>
+    </div>
+  </div>
+
+  <!-- Entrada: nome e turma -->
+  <section id="tela-entrada" class="tela">
+    <div class="cartao">
+      <div class="logo logo-grande">
+        <span class="logo-icone"></span>
+        <span><small>Interclasses</small>Boto<br>Faminto</span>
+      </div>
+
+      <form id="form-entrada" autocomplete="off">
+        <label class="campo">
+          <span>Seu nome</span>
+          <input id="campo-nome" maxlength="14" placeholder="Como quer aparecer" required>
+        </label>
+
+        <fieldset class="campo">
+          <legend>Sua turma</legend>
+          <div class="turmas" id="lista-turmas"></div>
+        </fieldset>
+
+        <p class="erro" id="erro-entrada" role="alert"></p>
+        <button class="botao-rosa botao-entrar" id="botao-entrar" type="submit">Mergulhar</button>
+      </form>
+
+      <ul class="regras">
+        <li><b>Coma</b> piabas e frutos para crescer</li>
+        <li><b>Engula</b> peixes de outras turmas menores que você</li>
+        <li><b>Fuja</b> dos maiores e do Boto, que caça o maior peixe do rio</li>
+        <li><b>Esconda-se</b> embaixo das vitórias-régias: peixe grande não entra</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Fim de partida -->
+  <section id="tela-fim" class="tela" hidden>
+    <div class="cartao cartao-fim">
+      <p class="fim-titulo">Fim da rodada!</p>
+      <p class="fim-campea" id="fim-campea"></p>
+      <div class="fim-minha" id="fim-minha"></div>
+      <ol class="fim-lista" id="fim-lista"></ol>
+      <p class="fim-aguarde">Aguarde o professor iniciar a próxima rodada</p>
+    </div>
+  </section>
+
+  <div id="status-conexao" hidden>Reconectando ao servidor…</div>
+
+  <script src="/static/js/conexao.js"></script>
+  <script src="/static/js/render.js"></script>
+  <script src="/static/js/jogador.js"></script>
+</body>
+</html>
